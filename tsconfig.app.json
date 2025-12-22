@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": [],
-    "allowJs": false
+    "allowJs": false,
+    "typeRoots": ["node_modules/@types"]
   },
   "files": [
     "src/main.ts",

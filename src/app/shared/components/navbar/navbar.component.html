@@ -7,30 +7,29 @@
     </a>
 
     <!-- Mobile Toggle Button -->
-    <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarContent"
-      aria-controls="navbarContent" 
-      aria-expanded="false" 
-      aria-label="Toggle navigation"
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="mobileNav"
+      aria-label="Abrir menú"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
 
     <!-- Navbar Content -->
-    <div class="collapse navbar-collapse" id="navbarContent">
+    <div class="navbar-collapse" id="mobileNav" [class.open]="menuOpen">
       <!-- Navigation Links -->
-      @if (isLoggedIn()) {
+      <ng-container *ngIf="isLoggedIn(); else guest">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reports" routerLinkActive="active">
+            <a class="nav-link" routerLink="/reports" routerLinkActive="active" (click)="closeMenu()">
                 Mis Reportes
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reports/new" routerLinkActive="active">
+            <a class="nav-link" routerLink="/reports/new" routerLinkActive="active" (click)="closeMenu()">
                 Nuevo Reporte
             </a>
           </li>
@@ -44,7 +43,7 @@
               href="#" 
               id="userDropdown" 
               role="button"
-              data-bs-toggle="dropdown" 
+              aria-haspopup="true"
               aria-expanded="false"
             >
               <div class="user-avatar me-2">
@@ -56,12 +55,12 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" (click)="closeMenu()">
                   <span class="me-2"></span> Mi Perfil
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" (click)="closeMenu()">
                   <span class="me-2"></span> Configuración
                 </a>
               </li>
@@ -74,14 +73,16 @@
             </ul>
           </div>
         </div>
-      } @else {
+      </ng-container>
+
+      <ng-template #guest>
         <!-- Login Button -->
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" routerLink="/auth/login">
+          <a class="nav-link" routerLink="/auth/login" (click)="closeMenu()">
              Iniciar Sesión
           </a>
         </div>
-      }
+      </ng-template>
     </div>
   </div>
 </nav>

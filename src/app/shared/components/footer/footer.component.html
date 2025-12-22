@@ -1,9 +1,9 @@
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
         <div class="footer-brand">
-          <span class="footer-icon"></span>
+          <span class="footer-icon" aria-hidden="true"></span>
           <span class="footer-text">Reportes Ciudadanos</span>
         </div>
         <p class="footer-description">
@@ -12,22 +12,22 @@
         </p>
       </div>
       
-      <div class="col-md-3">
-        <h5>Enlaces Rápidos</h5>
-        <ul class="footer-links">
-          <li><a routerLink="/reports"> Mis Reportes</a></li>
-          <li><a routerLink="/reports/new"> Nuevo Reporte</a></li>
-          <li><a href="#">📞 Contacto</a></li>
-          <li><a href="#">❓ Ayuda</a></li>
+      <div class="col-md-3" aria-labelledby="quick-links-title">
+        <h5 id="quick-links-title">Enlaces Rápidos</h5>
+        <ul class="footer-links" role="list">
+          <li role="listitem"><a routerLink="/reports" (click)="null">Mis Reportes</a></li>
+          <li role="listitem"><a routerLink="/reports/new" (click)="null">Nuevo Reporte</a></li>
+          <li role="listitem"><a href="mailto:contacto@example.com">Contacto</a></li>
+          <li role="listitem"><a href="#/help">Ayuda</a></li>
         </ul>
       </div>
       
-      <div class="col-md-3">
-        <h5>Legal</h5>
-        <ul class="footer-links">
-          <li><a href="#"> Términos de Uso</a></li>
-          <li><a href="#"> Política de Privacidad</a></li>
-          <li><a href="#"> Aviso Legal</a></li>
+      <div class="col-md-3" aria-labelledby="legal-links-title">
+        <h5 id="legal-links-title">Legal</h5>
+        <ul class="footer-links" role="list">
+          <li role="listitem"><a href="#/terms">Términos de Uso</a></li>
+          <li role="listitem"><a href="#/privacy">Política de Privacidad</a></li>
+          <li role="listitem"><a href="#/legal">Aviso Legal</a></li>
         </ul>
       </div>
     </div>

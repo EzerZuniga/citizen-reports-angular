@@ -57,12 +57,13 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      gap: 0.5rem;
 
-      &:hover, &:focus-visible { color: var(--brand-500); outline: none; }
+      /* Clear focus styles but keep visible focus for keyboard users */
+      &:hover { color: var(--brand-500); }
+      &:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand-500) 24%, transparent); outline-offset: 3px; }
 
-      &:focus-visible { outline: 3px solid rgba(74,144,226,0.14); outline-offset: 2px; }
-
-      span { margin-right: 0.5rem; }
+      span { margin-right: 0; }
     }
   }
 
@@ -94,4 +95,16 @@
       align-items: flex-start;
     }
   }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer * {
+    transition: none !important;
+  }
+}
+
+/* Ensure links have sufficient hit-area on touch devices */
+.footer a {
+  padding: 4px 2px;
 }

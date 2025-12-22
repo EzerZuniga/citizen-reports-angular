@@ -20,6 +20,21 @@ html, body { height: 100%; }
   --shadow-md: 0 6px 20px rgba(16,24,40,0.08);
 }
 
+/* Design tokens adicionales */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --text-base: 1rem; /* 16px */
+  --text-scale-1: 0.875rem; /* small */
+  --text-scale-2: 1.125rem; /* h6 */
+  --max-content-width: 1100px;
+}
+
 body {
   font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--bg);
@@ -28,6 +43,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+/* Tipografía escalable y legible */
+html { font-size: 16px; }
+h1 { font-size: clamp(1.6rem, 1.4rem + 1.2vw, 2.25rem); margin-bottom: var(--space-3); }
+h2 { font-size: clamp(1.4rem, 1.25rem + 0.9vw, 1.75rem); margin-bottom: var(--space-3); }
+h3 { font-size: clamp(1.2rem, 1.1rem + 0.6vw, 1.3rem); margin-bottom: var(--space-2); }
+p, li, label { font-size: var(--text-base); }
+
+/* Preferencia de movimiento reducido: eliminar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }
 
 /* Contenedor principal */
@@ -71,6 +98,30 @@ body {
   outline-offset: 2px;
   border-color: var(--brand-500);
 }
+
+/* Estados de validación accesibles */
+.form-control.is-invalid { border-color: #dc3545; }
+.form-control.is-valid { border-color: #28a745; }
+.invalid-feedback { color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; }
+
+/* Small helpers */
+.muted { color: var(--muted-500); }
+.flex { display:flex; }
+.flex-center { display:flex; align-items:center; justify-content:center; }
+.gap-1 { gap: var(--space-2); }
+.gap-2 { gap: var(--space-3); }
+.text-muted { color: var(--muted-500); }
+
+/* Botones: tamaños y estilos consistentes */
+.btn-sm { padding: 0.35rem 0.6rem; font-size: 0.85rem; }
+.btn-lg { padding: 0.9rem 1.25rem; font-size: 1.05rem; }
+
+/* Tarjetas con variantes */
+.card--elevated { box-shadow: var(--shadow-md); border-radius: var(--radius-md); }
+
+/* Layout utilities */
+.max-width-md { max-width: 840px; margin-left:auto; margin-right:auto; }
+.center-block { margin-left:auto; margin-right:auto; }
 
 /* Botones (sin animaciones) */
 .btn{
