@@ -1,51 +1,42 @@
 .login-container {
-  min-height: 70vh;
+  min-height: 72vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2.5rem 1rem;
 
   .card {
+    width: 380px;
     border: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--surface);
+
     .card-header {
-      background-color: #4a90e2;
+      background-color: var(--brand-500);
       color: white;
       border-bottom: none;
-      padding: 2rem 1.5rem;
-      
-      h3 {
-        margin: 0;
-        font-weight: 600;
-      }
+      padding: 1.6rem 1.25rem;
+      text-align: center;
+
+      h3 { margin: 0; font-weight: 700; font-size: 1.1rem; }
     }
-    
-    .card-body {
-      padding: 2rem;
-    }
+
+    .card-body { padding: 1.5rem; }
+
+    .card-footer { padding: 1rem 1.5rem; background: transparent; }
   }
-  
-  .invalid-feedback {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-  
-  .spinner-border {
-    margin-right: 0.5rem;
-  }
+
+  .invalid-feedback { color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; }
+  .spinner-border { margin-right: 0.5rem; }
 }
 
 // Responsive
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .login-container {
     padding: 1rem;
-    
-    .card {
-      margin: 0;
-      box-shadow: none;
-      border: 1px solid #dee2e6;
-    }
+
+    .card { width: 100%; box-shadow: none; border: 1px solid #eef0f2; }
   }
 }

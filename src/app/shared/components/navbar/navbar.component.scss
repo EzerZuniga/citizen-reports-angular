@@ -1,74 +1,96 @@
 .navbar {
-  padding: 1rem 0;
-  border-bottom: 1px solid #e9ecef;
-  
-  .navbar-brand {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #4a90e2;
+  padding: 0.75rem 0;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(16,24,40,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  .container {
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--brand-500);
+    display: flex;
+    align-items: center;
+
     .brand-icon {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-right: 0.5rem;
     }
-    
+
     .brand-text {
       @media (max-width: 576px) {
         display: none;
       }
     }
   }
-  
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
   .nav-link {
-    font-weight: 500;
-    color: #495057;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    
+    font-weight: 600;
+    color: var(--muted-700);
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    transition: background-color var(--transition), color var(--transition);
+
     &:hover {
-      color: #4a90e2;
-      background-color: rgba(74, 144, 226, 0.1);
+      color: var(--brand-500);
+      background-color: rgba(74,144,226,0.06);
     }
-    
+
     &.active {
-      color: #4a90e2;
-      background-color: rgba(74, 144, 226, 0.1);
+      color: var(--brand-500);
+      background-color: rgba(74,144,226,0.08);
     }
   }
-  
+
   .user-avatar {
-    width: 32px;
-    height: 32px;
-    background-color: #f8f9fa;
+    width: 36px;
+    height: 36px;
+    background-color: #f1f3f5;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
-  
+
   .user-name {
+    margin-left: 0.5rem;
+    font-weight: 600;
+    color: var(--muted-700);
+
     @media (max-width: 768px) {
       display: none;
     }
   }
-  
+
   .dropdown-menu {
     border: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
-    
+    box-shadow: 0 8px 28px rgba(16,24,40,0.08);
+    padding: 0.35rem 0;
+
     .dropdown-item {
-      padding: 0.75rem 1rem;
+      padding: 0.65rem 1rem;
       display: flex;
       align-items: center;
-      
+
       &:hover {
-        background-color: #f8f9fa;
-        color: #4a90e2;
+        background-color: rgba(16,24,40,0.02);
+        color: var(--brand-500);
       }
     }
   }
