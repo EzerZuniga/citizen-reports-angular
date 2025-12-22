@@ -112,12 +112,12 @@ export class ReportFormComponent implements OnInit {
 
   getCategoryIcon(category: ReportCategory): string {
     const icons: Record<ReportCategory, string> = {
-      [ReportCategory.INFRASTRUCTURE]: '🏗️',
-      [ReportCategory.SECURITY]: '👮',
-      [ReportCategory.ENVIRONMENT]: '🌿',
-      [ReportCategory.TRANSPORT]: '🚗',
-      [ReportCategory.OTHER]: '📋'
+      [ReportCategory.INFRASTRUCTURE]: '',
+      [ReportCategory.SECURITY]: '',
+      [ReportCategory.ENVIRONMENT]: '',
+      [ReportCategory.TRANSPORT]: '',
+      [ReportCategory.OTHER]: ''
     };
-    return icons[category] || '📋';
+    return icons[category] || '';
   }
 }

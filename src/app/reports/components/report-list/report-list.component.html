@@ -7,7 +7,7 @@
       </div>
       <div class="col-md-4 text-md-end">
         <a routerLink="/reports/new" class="btn btn-success">
-          <span>➕</span> Nuevo Reporte
+          <span></span> Nuevo Reporte
         </a>
       </div>
     </div>
@@ -55,7 +55,7 @@
                 (input)="applySearchFilter()"
               >
               <button class="btn btn-outline-secondary" type="button" (click)="applySearchFilter()">
-                🔍
+                
               </button>
             </div>
           </div>
@@ -145,20 +145,20 @@
                       [routerLink]="['/reports', report.id]" 
                       class="btn btn-outline-primary"
                     >
-                      👁️
+                      
                     </a>
                     <a 
                       [routerLink]="['/reports', report.id, 'edit']" 
                       class="btn btn-outline-secondary"
                     >
-                      ✏️
+                      
                     </a>
                     <button 
                       type="button" 
                       class="btn btn-outline-danger"
                       (click)="deleteReport(report.id!)"
                     >
-                      🗑️
+                      
                     </button>
                   </div>
                 </td>

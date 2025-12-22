@@ -17,7 +17,7 @@ export class ReportDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    public router: Router,
     private reportService: ReportService
   ) {}
 
@@ -93,13 +93,13 @@ export class ReportDetailComponent implements OnInit {
 
   getCategoryIcon(category: string): string {
     const icons: Record<string, string> = {
-      'INFRASTRUCTURE': '🏗️',
-      'SECURITY': '👮',
-      'ENVIRONMENT': '🌿',
-      'TRANSPORT': '🚗',
-      'OTHER': '📋'
+      'INFRASTRUCTURE': '',
+      'SECURITY': '',
+      'ENVIRONMENT': '',
+      'TRANSPORT': '',
+      'OTHER': ''
     };
-    return icons[category] || '📋';
+    return icons[category] || '';
   }
 
   getFormattedDate(date?: Date): string {

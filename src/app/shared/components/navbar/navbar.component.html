@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Logo/Brand -->
     <a class="navbar-brand" routerLink="/">
-      <span class="brand-icon">📋</span>
+      <span class="brand-icon"> </span>
       <span class="brand-text">Reportes Ciudadanos</span>
     </a>
 
@@ -26,12 +26,12 @@
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="/reports" routerLinkActive="active">
-              📋 Mis Reportes
+                Mis Reportes
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/reports/new" routerLinkActive="active">
-              ➕ Nuevo Reporte
+                Nuevo Reporte
             </a>
           </li>
         </ul>
@@ -48,7 +48,7 @@
               aria-expanded="false"
             >
               <div class="user-avatar me-2">
-                <span>👤</span>
+                <span></span>
               </div>
               <span class="user-name">
                 {{ currentUser?.name || 'Usuario' }}
@@ -57,18 +57,18 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <li>
                 <a class="dropdown-item" href="#">
-                  <span class="me-2">👤</span> Mi Perfil
+                  <span class="me-2"></span> Mi Perfil
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  <span class="me-2">⚙️</span> Configuración
+                  <span class="me-2"></span> Configuración
                 </a>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <button class="dropdown-item" (click)="logout()">
-                  <span class="me-2">🚪</span> Cerrar Sesión
+                  <span class="me-2"></span> Cerrar Sesión
                 </button>
               </li>
             </ul>
@@ -78,7 +78,7 @@
         <!-- Login Button -->
         <div class="navbar-nav ms-auto">
           <a class="nav-link" routerLink="/auth/login">
-            🔑 Iniciar Sesión
+             Iniciar Sesión
           </a>
         </div>
       }
