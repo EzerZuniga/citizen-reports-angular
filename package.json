@@ -8,6 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "npx karma start --single-run --browsers ChromeHeadless",
     "lint": "npx eslint \"src/**/*.{ts,js}\" --ext .ts,.js --fix"
   },
   "private": true,
