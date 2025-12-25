@@ -10,12 +10,14 @@ Sistema web completo para la gestión de reportes ciudadanos, desarrollado con A
 ## 🌟 Características Principales
 
 ### 🔐 **Autenticación Segura**
+
 - Sistema de login con validaciones
 - Gestión de sesiones persistente
 - Protección de rutas con guards
 - Logout seguro
 
 ### 📋 **Gestión Completa de Reportes**
+
 - **CRUD completo**: Crear, Leer, Actualizar, Eliminar reportes
 - **Categorización**: Infraestructura, Seguridad, Medio Ambiente, Transporte, Otros
 - **Estados de seguimiento**: Pendiente, En Progreso, Resuelto, Cerrado
@@ -23,6 +25,7 @@ Sistema web completo para la gestión de reportes ciudadanos, desarrollado con A
 - **Búsqueda inteligente**: En títulos, descripciones y ubicaciones
 
 ### 🎨 **Experiencia de Usuario**
+
 - **Diseño responsive** para móviles, tablets y desktop
 - **Interfaz moderna** con componentes reutilizables
 - **Validación en tiempo real** de formularios
@@ -31,6 +34,7 @@ Sistema web completo para la gestión de reportes ciudadanos, desarrollado con A
 - **Estados de carga** con spinners
 
 ### 🏗️ **Arquitectura Profesional**
+
 - **Modularidad**: Separación por funcionalidades
 - **Lazy Loading**: Optimización de carga inicial
 - **Servicios centralizados**: Lógica de negocio reutilizable
@@ -38,6 +42,7 @@ Sistema web completo para la gestión de reportes ciudadanos, desarrollado con A
 - **Tipado fuerte** con TypeScript
 
 ## 📁 Estructura del Proyecto
+
 citizen-reports-angular/
 ├── src/
 │ ├── app/
@@ -63,7 +68,7 @@ citizen-reports-angular/
 │ │ │ └── shared.module.ts
 │ │ │
 │ │ ├── app-routing.module.ts # Rutas principales
-│ │ ├── app.component.* # Componente raíz
+│ │ ├── app.component.\* # Componente raíz
 │ │ └── app.module.ts # Módulo principal
 │ │
 │ ├── assets/ # Recursos estáticos
@@ -91,20 +96,27 @@ text
    ```bash
    git clone [url-del-repositorio]
    cd citizen-reports-angular
-Instalar dependencias
+   Instalar dependencias
+   ```
 
 bash
 npm install
+
 # o con yarn
+
 yarn install
 Verificar instalación
 
 bash
 ng version
+
 # Debería mostrar Angular CLI: 17.x.x
+
 Ejecutar la aplicación en desarrollo
 
 bash
 npm start
+
 # o
+
 ng serve

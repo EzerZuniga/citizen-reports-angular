@@ -2,7 +2,11 @@
   <div class="container">
     <!-- Botón de volver -->
     <div class="mb-4">
-      <button type="button" class="btn btn-outline-secondary" (click)="router.navigate(['/reports'])">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="router.navigate(['/reports'])"
+      >
         ← Volver a la lista
       </button>
     </div>
@@ -93,7 +97,7 @@
                 <div class="row">
                   @for (photo of report.photos; track $index) {
                     <div class="col-md-4 mb-3">
-                      <img [src]="photo" alt="Foto del reporte" class="img-fluid rounded">
+                      <img [src]="photo" alt="Foto del reporte" class="img-fluid rounded" />
                     </div>
                   }
                 </div>
@@ -112,8 +116,8 @@
             <div class="card-body">
               <div class="d-grid gap-2">
                 @for (status of statusOptions; track status) {
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     class="btn btn-outline-secondary"
                     [class.active]="status === report.status"
                     (click)="updateStatus(status)"
@@ -136,18 +140,11 @@
             </div>
             <div class="card-body">
               <div class="d-grid gap-2">
-                <a 
-                  [routerLink]="['/reports', report.id, 'edit']" 
-                  class="btn btn-primary"
-                >
-                    Editar Reporte
+                <a [routerLink]="['/reports', report.id, 'edit']" class="btn btn-primary">
+                  Editar Reporte
                 </a>
-                <button 
-                  type="button" 
-                  class="btn btn-outline-danger"
-                  (click)="deleteReport()"
-                >
-                    Eliminar Reporte
+                <button type="button" class="btn btn-outline-danger" (click)="deleteReport()">
+                  Eliminar Reporte
                 </button>
               </div>
             </div>
@@ -168,9 +165,7 @@
               <div class="alert alert-success">
                 <strong>RESUELTO:</strong> El problema ha sido solucionado.
               </div>
-              <div class="alert alert-secondary">
-                <strong>CERRADO:</strong> Reporte finalizado.
-              </div>
+              <div class="alert alert-secondary"><strong>CERRADO:</strong> Reporte finalizado.</div>
             </div>
           </div>
         </div>

@@ -6,13 +6,13 @@
           <div class="card-header">
             <h3 class="mb-0">
               @if (isEditMode) {
-                  Editar Reporte
+                Editar Reporte
               } @else {
-                  Crear Nuevo Reporte
+                Crear Nuevo Reporte
               }
             </h3>
           </div>
-          
+
           <div class="card-body">
             @if (loading && !submitted) {
               <div class="text-center py-5">
@@ -29,7 +29,6 @@
               </div>
             } @else {
               <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
-                
                 <!-- Título -->
                 <div class="form-group mb-4">
                   <label for="title" class="form-label">Título *</label>
@@ -40,7 +39,7 @@
                     class="form-control"
                     [class.is-invalid]="submitted && f['title'].errors"
                     placeholder="Ej: Bache en avenida principal"
-                  >
+                  />
                   @if (submitted && f['title'].errors) {
                     <div class="invalid-feedback d-block">
                       @if (f['title'].errors['required']) {
@@ -144,7 +143,7 @@
                     class="form-control"
                     [class.is-invalid]="submitted && f['location'].errors"
                     placeholder="Ej: Avenida Principal 123, Ciudad"
-                  >
+                  />
                   @if (submitted && f['location'].errors) {
                     <div class="invalid-feedback d-block">
                       @if (f['location'].errors['required']) {
@@ -168,7 +167,7 @@
                       class="form-control"
                       step="any"
                       placeholder="Ej: 40.7128"
-                    >
+                    />
                   </div>
                   <div class="col-md-6">
                     <label for="longitude" class="form-label">Longitud</label>
@@ -179,10 +178,13 @@
                       class="form-control"
                       step="any"
                       placeholder="Ej: -74.0060"
-                    >
+                    />
                   </div>
                   <div class="col-12">
-                    <small class="text-muted">Las coordenadas son opcionales y se utilizan para ubicación precisa en mapas.</small>
+                    <small class="text-muted"
+                      >Las coordenadas son opcionales y se utilizan para ubicación precisa en
+                      mapas.</small
+                    >
                   </div>
                 </div>
 

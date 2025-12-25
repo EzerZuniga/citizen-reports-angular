@@ -10,19 +10,37 @@
           <div class="card-body">
             <div class="form-group">
               <label for="lm-username">Usuario</label>
-              <input id="lm-username" type="text" formControlName="username" class="form-control" [class.is-invalid]="submitted && f['username'].errors" autocomplete="username">
+              <input
+                id="lm-username"
+                type="text"
+                formControlName="username"
+                class="form-control"
+                [class.is-invalid]="submitted && f['username'].errors"
+                autocomplete="username"
+              />
               <div *ngIf="submitted && f['username'].errors" class="invalid-feedback d-block">
                 <div *ngIf="f['username'].errors?.['required']">Usuario es requerido</div>
-                <div *ngIf="f['username'].errors?.['minlength']">Usuario debe tener al menos 3 caracteres</div>
+                <div *ngIf="f['username'].errors?.['minlength']">
+                  Usuario debe tener al menos 3 caracteres
+                </div>
               </div>
             </div>
 
             <div class="form-group mt-3">
               <label for="lm-password">Contraseña</label>
-              <input id="lm-password" type="password" formControlName="password" class="form-control" [class.is-invalid]="submitted && f['password'].errors" autocomplete="current-password">
+              <input
+                id="lm-password"
+                type="password"
+                formControlName="password"
+                class="form-control"
+                [class.is-invalid]="submitted && f['password'].errors"
+                autocomplete="current-password"
+              />
               <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
                 <div *ngIf="f['password'].errors?.['required']">Contraseña es requerida</div>
-                <div *ngIf="f['password'].errors?.['minlength']">Contraseña debe tener al menos 6 caracteres</div>
+                <div *ngIf="f['password'].errors?.['minlength']">
+                  Contraseña debe tener al menos 6 caracteres
+                </div>
               </div>
             </div>
 
@@ -30,7 +48,11 @@
 
             <div class="form-group mt-4">
               <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2" aria-hidden="true"></span>
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-2"
+                  aria-hidden="true"
+                ></span>
                 Iniciar Sesión
               </button>
             </div>

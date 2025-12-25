@@ -10,7 +10,7 @@
 .lm-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(8,10,15,0.48);
+  background: rgba(8, 10, 15, 0.48);
 }
 
 .lm-panel {
@@ -21,7 +21,7 @@
   margin: 1rem;
   background: var(--surface, #fff);
   border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(2,6,23,0.12);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
   padding: 0.5rem;
 }
 
@@ -36,5 +36,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lm-panel { transition: none !important; }
+  .lm-panel {
+    transition: none !important;
+  }
 }

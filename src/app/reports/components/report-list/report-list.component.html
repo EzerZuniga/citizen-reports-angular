@@ -6,9 +6,7 @@
         <p class="text-muted">Visualiza y gestiona todos los reportes ciudadanos</p>
       </div>
       <div class="col-md-4 text-md-end">
-        <a routerLink="/reports/new" class="btn btn-success">
-          <span></span> Nuevo Reporte
-        </a>
+        <a routerLink="/reports/new" class="btn btn-success"> <span></span> Nuevo Reporte </a>
       </div>
     </div>
 
@@ -18,48 +16,42 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label class="form-label">Categoría</label>
-            <select 
-              class="form-control" 
-              [(ngModel)]="filter.category"
-              (change)="onFilterChange()"
-            >
+            <select class="form-control" [(ngModel)]="filter.category" (change)="onFilterChange()">
               <option [ngValue]="undefined">Todas las categorías</option>
               @for (category of categories; track category) {
                 <option [value]="category">{{ category }}</option>
               }
             </select>
           </div>
-          
+
           <div class="col-md-3 mb-3">
             <label class="form-label">Estado</label>
-            <select 
-              class="form-control" 
-              [(ngModel)]="filter.status"
-              (change)="onFilterChange()"
-            >
+            <select class="form-control" [(ngModel)]="filter.status" (change)="onFilterChange()">
               <option [ngValue]="undefined">Todos los estados</option>
               @for (status of statuses; track status) {
                 <option [value]="status">{{ status }}</option>
               }
             </select>
           </div>
-          
+
           <div class="col-md-4 mb-3">
             <label class="form-label">Buscar</label>
             <div class="input-group">
-              <input 
-                type="text" 
-                class="form-control" 
+              <input
+                type="text"
+                class="form-control"
                 placeholder="Buscar en títulos, descripciones o ubicaciones..."
                 [(ngModel)]="searchTerm"
                 (input)="applySearchFilter()"
-              >
-              <button class="btn btn-outline-secondary" type="button" (click)="applySearchFilter()">
-                
-              </button>
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="applySearchFilter()"
+              ></button>
             </div>
           </div>
-          
+
           <div class="col-md-2 mb-3 d-flex align-items-end">
             <button class="btn btn-outline-secondary w-100" (click)="clearFilters()">
               Limpiar Filtros
@@ -93,9 +85,7 @@
           <h5 class="card-title">No se encontraron reportes</h5>
           <p class="card-text">No hay reportes que coincidan con los criterios de búsqueda.</p>
           @if (searchTerm || filter.category || filter.status) {
-            <button class="btn btn-primary" (click)="clearFilters()">
-              Ver todos los reportes
-            </button>
+            <button class="btn btn-primary" (click)="clearFilters()">Ver todos los reportes</button>
           }
         </div>
       </div>
@@ -121,7 +111,7 @@
               <tr>
                 <td>
                   <strong>{{ report.title }}</strong>
-                  <div class="text-muted small">{{ report.description | slice:0:50 }}...</div>
+                  <div class="text-muted small">{{ report.description | slice: 0 : 50 }}...</div>
                 </td>
                 <td>
                   <span class="badge bg-light text-dark">
@@ -135,31 +125,23 @@
                   </span>
                 </td>
                 <td>
-                  <div>{{ report.createdAt | date:'dd/MM/yyyy' }}</div>
-                  <div class="text-muted small">{{ report.createdAt | date:'HH:mm' }}</div>
+                  <div>{{ report.createdAt | date: 'dd/MM/yyyy' }}</div>
+                  <div class="text-muted small">{{ report.createdAt | date: 'HH:mm' }}</div>
                 </td>
                 <td>{{ report.userName }}</td>
                 <td>
                   <div class="btn-group btn-group-sm">
-                    <a 
-                      [routerLink]="['/reports', report.id]" 
-                      class="btn btn-outline-primary"
-                    >
-                      
-                    </a>
-                    <a 
-                      [routerLink]="['/reports', report.id, 'edit']" 
+                    <a [routerLink]="['/reports', report.id]" class="btn btn-outline-primary"> </a>
+                    <a
+                      [routerLink]="['/reports', report.id, 'edit']"
                       class="btn btn-outline-secondary"
                     >
-                      
                     </a>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       class="btn btn-outline-danger"
                       (click)="deleteReport(report.id!)"
-                    >
-                      
-                    </button>
+                    ></button>
                   </div>
                 </td>
               </tr>
@@ -175,7 +157,7 @@
             <li class="page-item" [class.disabled]="currentPage === 1">
               <button class="page-link" (click)="prevPage()">Anterior</button>
             </li>
-            
+
             @for (page of [].constructor(totalPages); track page; let i = $index) {
               <li class="page-item" [class.active]="currentPage === i + 1">
                 <button class="page-link" (click)="currentPage = i + 1">
@@ -183,7 +165,7 @@
                 </button>
               </li>
             }
-            
+
             <li class="page-item" [class.disabled]="currentPage === totalPages">
               <button class="page-link" (click)="nextPage()">Siguiente</button>
             </li>
@@ -193,8 +175,8 @@
 
       <!-- Información de paginación -->
       <div class="text-center text-muted mt-3">
-        Mostrando {{ paginatedReports.length }} de {{ filteredReports.length }} reportes
-        (Página {{ currentPage }} de {{ totalPages }})
+        Mostrando {{ paginatedReports.length }} de {{ filteredReports.length }} reportes (Página
+        {{ currentPage }} de {{ totalPages }})
       </div>
     }
   </div>

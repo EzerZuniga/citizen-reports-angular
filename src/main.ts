@@ -2,7 +2,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 // Declaración segura para HMR cuando no están los tipos de Node en el build
-declare const module: any;
+declare const module:
+  | {
+      hot?: {
+        accept: () => void;
+        dispose: (cb: () => void) => void;
+      };
+    }
+  | undefined;
 
 /**
  * Entry point bootstrap seguro y profesional:
@@ -14,15 +21,12 @@ declare const module: any;
 function registerGlobalErrorHandlers() {
   if (typeof window === 'undefined') return;
 
-  window.addEventListener('error', (event) => {
-    // Aquí podrías enviar errores a tu servicio de telemetría
-    // sendErrorToService(event.error || event.message);
-    // Mantener logging claro en consola para desarrollo
+  window.addEventListener('error', (event: ErrorEvent) => {
     // eslint-disable-next-line no-console
     console.error('Global error captured:', event.error || event.message, event);
   });
 
-  window.addEventListener('unhandledrejection', (event) => {
+  window.addEventListener('unhandledrejection', (event: PromiseRejectionEvent) => {
     // eslint-disable-next-line no-console
     console.error('Unhandled promise rejection:', event.reason);
   });
@@ -31,11 +35,12 @@ function registerGlobalErrorHandlers() {
 async function bootstrap() {
   registerGlobalErrorHandlers();
 
-  const t0 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+  const t0 = typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
 
   try {
     await platformBrowserDynamic().bootstrapModule(AppModule);
-    const t1 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    const t1 =
+      typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
     // eslint-disable-next-line no-console
     console.info(`App bootstrapped in ${Math.round(t1 - t0)} ms`);
   } catch (err) {
@@ -45,9 +50,9 @@ async function bootstrap() {
   }
 
   // HMR support (safe guard)
-  if ((module as any)?.hot) {
-    (module as any).hot.accept();
-    (module as any).hot.dispose(() => {
+  if (module?.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => {
       // Optional: perform cleanup before replacing module
       // e.g. remove global listeners if needed
     });

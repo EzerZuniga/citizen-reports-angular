@@ -8,17 +8,7 @@ import { ReportFormComponent } from './components/report-form/report-form.compon
 import { ReportDetailComponent } from './components/report-detail/report-detail.component';
 
 @NgModule({
-  declarations: [
-    ReportListComponent,
-    ReportFormComponent,
-    ReportDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule,
-    ReportsRoutingModule
-  ]
+  declarations: [ReportListComponent, ReportFormComponent, ReportDetailComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule, ReportsRoutingModule],
 })
-export class ReportsModule { }
+export class ReportsModule {}

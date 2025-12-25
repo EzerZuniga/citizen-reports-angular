@@ -20,16 +20,31 @@
       padding: 1.6rem 1.25rem;
       text-align: center;
 
-      h3 { margin: 0; font-weight: 700; font-size: 1.1rem; }
+      h3 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
     }
 
-    .card-body { padding: 1.5rem; }
+    .card-body {
+      padding: 1.5rem;
+    }
 
-    .card-footer { padding: 1rem 1.5rem; background: transparent; }
+    .card-footer {
+      padding: 1rem 1.5rem;
+      background: transparent;
+    }
   }
 
-  .invalid-feedback { color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; }
-  .spinner-border { margin-right: 0.5rem; }
+  .invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  .spinner-border {
+    margin-right: 0.5rem;
+  }
 }
 
 // Responsive
@@ -37,6 +52,10 @@
   .login-container {
     padding: 1rem;
 
-    .card { width: 100%; box-shadow: none; border: 1px solid #eef0f2; }
+    .card {
+      width: 100%;
+      box-shadow: none;
+      border: 1px solid #eef0f2;
+    }
   }
 }

@@ -60,23 +60,36 @@
       gap: 0.5rem;
 
       /* Clear focus styles but keep visible focus for keyboard users */
-      &:hover { color: var(--brand-500); }
-      &:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand-500) 24%, transparent); outline-offset: 3px; }
+      &:hover {
+        color: var(--brand-500);
+      }
+      &:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--brand-500) 24%, transparent);
+        outline-offset: 3px;
+      }
 
-      span { margin-right: 0; }
+      span {
+        margin-right: 0;
+      }
     }
   }
 
   .footer-bottom {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(16,24,40,0.04);
+    border-top: 1px solid rgba(16, 24, 40, 0.04);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .copyright { color: var(--muted-500); font-size: 0.9rem; }
-    .version { color: #adb5bd; font-size: 0.85rem; }
+    .copyright {
+      color: var(--muted-500);
+      font-size: 0.9rem;
+    }
+    .version {
+      color: #adb5bd;
+      font-size: 0.85rem;
+    }
   }
 }
 

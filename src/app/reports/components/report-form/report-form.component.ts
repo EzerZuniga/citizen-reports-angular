@@ -7,7 +7,7 @@ import { Report, ReportCategory, ReportStatus } from '../../models/report.model'
 @Component({
   selector: 'app-report-form',
   templateUrl: './report-form.component.html',
-  styleUrls: ['./report-form.component.scss']
+  styleUrls: ['./report-form.component.scss'],
 })
 export class ReportFormComponent implements OnInit {
   reportForm: FormGroup;
@@ -16,7 +16,7 @@ export class ReportFormComponent implements OnInit {
   submitted = false;
   error = '';
   reportId?: number;
-  
+
   categories = Object.values(ReportCategory);
   statuses = Object.values(ReportStatus);
 
@@ -33,12 +33,12 @@ export class ReportFormComponent implements OnInit {
       location: ['', [Validators.required, Validators.minLength(5)]],
       latitude: [''],
       longitude: [''],
-      status: [ReportStatus.PENDING, Validators.required]
+      status: [ReportStatus.PENDING, Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       if (params['id']) {
         this.isEditMode = true;
         this.reportId = +params['id'];
@@ -49,7 +49,7 @@ export class ReportFormComponent implements OnInit {
 
   loadReport(): void {
     if (!this.reportId) return;
-    
+
     this.loading = true;
     this.reportService.getReport(this.reportId).subscribe({
       next: (report) => {
@@ -60,11 +60,13 @@ export class ReportFormComponent implements OnInit {
         this.error = 'Error al cargar el reporte';
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
-  get f() { return this.reportForm.controls; }
+  get f() {
+    return this.reportForm.controls;
+  }
 
   onSubmit(): void {
     this.submitted = true;
@@ -86,7 +88,7 @@ export class ReportFormComponent implements OnInit {
           this.error = 'Error al actualizar el reporte';
           this.loading = false;
           console.error(err);
-        }
+        },
       });
     } else {
       this.reportService.createReport(reportData).subscribe({
@@ -97,7 +99,7 @@ export class ReportFormComponent implements OnInit {
           this.error = 'Error al crear el reporte';
           this.loading = false;
           console.error(err);
-        }
+        },
       });
     }
   }
@@ -116,7 +118,7 @@ export class ReportFormComponent implements OnInit {
       [ReportCategory.SECURITY]: '',
       [ReportCategory.ENVIRONMENT]: '',
       [ReportCategory.TRANSPORT]: '',
-      [ReportCategory.OTHER]: ''
+      [ReportCategory.OTHER]: '',
     };
     return icons[category] || '';
   }

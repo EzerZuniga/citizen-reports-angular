@@ -7,24 +7,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    FooterComponent
-    ,LoginModalComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  declarations: [NavbarComponent, FooterComponent, LoginModalComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   exports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NavbarComponent,
-    FooterComponent
-  ]
+    FooterComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

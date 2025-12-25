@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
-  styleUrls: ['./login-modal.component.scss']
+  styleUrls: ['./login-modal.component.scss'],
 })
 export class LoginModalComponent {
   @Output() close = new EventEmitter<void>();
@@ -22,7 +22,7 @@ export class LoginModalComponent {
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -41,12 +41,16 @@ export class LoginModalComponent {
     this.close.emit();
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit(): void {
     this.submitted = true;
     this.error = '';
-    if (this.loginForm.invalid) { return; }
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.loading = true;
     this.authService.login(this.f['username'].value, this.f['password'].value).subscribe({
       next: () => {
@@ -57,7 +61,9 @@ export class LoginModalComponent {
         this.error = 'Usuario o contraseña incorrectos';
         this.loading = false;
       },
-      complete: () => { this.loading = false; }
+      complete: () => {
+        this.loading = false;
+      },
     });
   }
 }

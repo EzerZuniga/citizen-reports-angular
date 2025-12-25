@@ -6,7 +6,7 @@ import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<void>();
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
   }
 
   // Getter conveniente para acceder a los controles del formulario
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit(): void {
     this.submitted = true;
@@ -46,23 +48,25 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    
-    this.authService.login(
-      this.f['username'].value, 
-      this.f['password'].value
-    ).subscribe({
+
+    this.authService.login(this.f['username'].value, this.f['password'].value).subscribe({
       next: () => {
         // Emit event for embedded usages (modals)
-        try { this.loggedIn.emit(); } catch {}
+        try {
+          this.loggedIn.emit();
+        } catch (e) {
+          // noop
+          void e;
+        }
         this.router.navigate([this.returnUrl]);
       },
-      error: (error) => {
+      error: (_err) => {
         this.error = 'Usuario o contraseña incorrectos';
         this.loading = false;
       },
       complete: () => {
         this.loading = false;
-      }
+      },
     });
   }
 }

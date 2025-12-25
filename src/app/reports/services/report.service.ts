@@ -4,7 +4,7 @@ import { delay, map } from 'rxjs/operators';
 import { Report, ReportStatus, ReportCategory, ReportFilter } from '../models/report.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportService {
   private readonly STORAGE_KEY = 'citizen_reports';
@@ -18,11 +18,15 @@ export class ReportService {
   private loadReports(): void {
     const reportsJson = localStorage.getItem(this.STORAGE_KEY);
     if (reportsJson) {
-      this.reports = JSON.parse(reportsJson).map((report: any) => ({
-        ...report,
-        createdAt: new Date(report.createdAt),
-        updatedAt: new Date(report.updatedAt)
-      }));
+      const parsed = JSON.parse(reportsJson) as unknown[];
+      this.reports = parsed.map((report) => {
+        const r = report as Partial<Report & { createdAt?: string; updatedAt?: string }>;
+        return {
+          ...r,
+          createdAt: r.createdAt ? new Date(r.createdAt) : new Date(),
+          updatedAt: r.updatedAt ? new Date(r.updatedAt) : new Date(),
+        } as Report;
+      });
     }
   }
 
@@ -43,7 +47,7 @@ export class ReportService {
           createdAt: new Date('2024-01-15'),
           updatedAt: new Date('2024-01-15'),
           userId: 1,
-          userName: 'Juan Pérez'
+          userName: 'Juan Pérez',
         },
         {
           id: 2,
@@ -55,7 +59,7 @@ export class ReportService {
           createdAt: new Date('2024-01-10'),
           updatedAt: new Date('2024-01-12'),
           userId: 2,
-          userName: 'María García'
+          userName: 'María García',
         },
         {
           id: 3,
@@ -67,18 +71,19 @@ export class ReportService {
           createdAt: new Date('2024-01-05'),
           updatedAt: new Date('2024-01-09'),
           userId: 1,
-          userName: 'Juan Pérez'
-        }
+          userName: 'Juan Pérez',
+        },
       ];
-      
+
       this.reports = sampleReports;
       this.saveReports();
     }
   }
 
   private generateId(): number {
-    const maxId = this.reports.reduce((max, report) => 
-      report.id && report.id > max ? report.id : max, 0
+    const maxId = this.reports.reduce(
+      (max, report) => (report.id && report.id > max ? report.id : max),
+      0
     );
     return maxId + 1;
   }
@@ -86,32 +91,35 @@ export class ReportService {
   getReports(filter?: ReportFilter): Observable<Report[]> {
     return of(this.reports).pipe(
       delay(500), // Simular delay de red
-      map(reports => {
+      map((reports) => {
         if (!filter) return reports;
-        
-        return reports.filter(report => {
+
+        return reports.filter((report) => {
           let matches = true;
-          
+
           if (filter.category && report.category !== filter.category) {
             matches = false;
           }
-          
+
           if (filter.status && report.status !== filter.status) {
             matches = false;
           }
-          
-          if (filter.location && !report.location.toLowerCase().includes(filter.location.toLowerCase())) {
+
+          if (
+            filter.location &&
+            !report.location.toLowerCase().includes(filter.location.toLowerCase())
+          ) {
             matches = false;
           }
-          
+
           if (filter.startDate && report.createdAt && report.createdAt < filter.startDate) {
             matches = false;
           }
-          
+
           if (filter.endDate && report.createdAt && report.createdAt > filter.endDate) {
             matches = false;
           }
-          
+
           return matches;
         });
       })
@@ -119,8 +127,8 @@ export class ReportService {
   }
 
   getReport(id: number): Observable<Report> {
-    const report = this.reports.find(r => r.id === id);
-    
+    const report = this.reports.find((r) => r.id === id);
+
     if (report) {
       return of(report).pipe(delay(300));
     } else {
@@ -136,45 +144,45 @@ export class ReportService {
       createdAt: new Date(),
       updatedAt: new Date(),
       userId: 1, // En una app real, esto vendría del usuario autenticado
-      userName: 'Usuario Actual'
+      userName: 'Usuario Actual',
     };
-    
+
     this.reports.push(newReport);
     this.saveReports();
-    
+
     return of(newReport).pipe(delay(500));
   }
 
   updateReport(id: number, updates: Partial<Report>): Observable<Report> {
-    const index = this.reports.findIndex(r => r.id === id);
-    
+    const index = this.reports.findIndex((r) => r.id === id);
+
     if (index === -1) {
       return throwError(() => new Error('Reporte no encontrado'));
     }
-    
+
     const updatedReport = {
       ...this.reports[index],
       ...updates,
       id: id,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
-    
+
     this.reports[index] = updatedReport;
     this.saveReports();
-    
+
     return of(updatedReport).pipe(delay(500));
   }
 
   deleteReport(id: number): Observable<void> {
-    const index = this.reports.findIndex(r => r.id === id);
-    
+    const index = this.reports.findIndex((r) => r.id === id);
+
     if (index === -1) {
       return throwError(() => new Error('Reporte no encontrado'));
     }
-    
+
     this.reports.splice(index, 1);
     this.saveReports();
-    
+
     return of(void 0).pipe(delay(300));
   }
 

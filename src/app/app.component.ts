@@ -1,11 +1,18 @@
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { Router, Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart } from '@angular/router';
+import {
+  Router,
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+} from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'Reportes Ciudadanos';
@@ -21,7 +28,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.routerSub = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.setLoading(true);
-      } else if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
         // Slight delay to avoid flicker on fast navigations
         timer(120).subscribe(() => this.setLoading(false));
       }

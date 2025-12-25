@@ -9,9 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -20,9 +18,9 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule // import core singletons (services)
+    CoreModule, // import core singletons (services)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

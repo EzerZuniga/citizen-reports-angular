@@ -6,13 +6,13 @@ import { Report, ReportStatus } from '../../models/report.model';
 @Component({
   selector: 'app-report-detail',
   templateUrl: './report-detail.component.html',
-  styleUrls: ['./report-detail.component.scss']
+  styleUrls: ['./report-detail.component.scss'],
 })
 export class ReportDetailComponent implements OnInit {
   report?: Report;
   loading = true;
   error = '';
-  
+
   statusOptions = Object.values(ReportStatus);
 
   constructor(
@@ -27,7 +27,7 @@ export class ReportDetailComponent implements OnInit {
 
   loadReport(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    
+
     if (!id) {
       this.error = 'ID de reporte no válido';
       this.loading = false;
@@ -44,13 +44,13 @@ export class ReportDetailComponent implements OnInit {
         this.error = 'Error al cargar el reporte';
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
   updateStatus(newStatus: ReportStatus): void {
     if (!this.report || !this.report.id) return;
-    
+
     this.loading = true;
     this.reportService.updateReport(this.report.id, { status: newStatus }).subscribe({
       next: (updatedReport) => {
@@ -61,14 +61,16 @@ export class ReportDetailComponent implements OnInit {
         this.error = 'Error al actualizar el estado';
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
   deleteReport(): void {
     if (!this.report || !this.report.id) return;
-    
-    if (confirm('¿Está seguro de que desea eliminar este reporte? Esta acción no se puede deshacer.')) {
+
+    if (
+      confirm('¿Está seguro de que desea eliminar este reporte? Esta acción no se puede deshacer.')
+    ) {
       this.reportService.deleteReport(this.report.id).subscribe({
         next: () => {
           this.router.navigate(['/reports']);
@@ -76,7 +78,7 @@ export class ReportDetailComponent implements OnInit {
         error: (err) => {
           this.error = 'Error al eliminar el reporte';
           console.error(err);
-        }
+        },
       });
     }
   }
@@ -86,18 +88,18 @@ export class ReportDetailComponent implements OnInit {
       [ReportStatus.PENDING]: 'badge-warning',
       [ReportStatus.IN_PROGRESS]: 'badge-info',
       [ReportStatus.RESOLVED]: 'badge-success',
-      [ReportStatus.CLOSED]: 'badge-secondary'
+      [ReportStatus.CLOSED]: 'badge-secondary',
     };
     return classes[status] || 'badge-secondary';
   }
 
   getCategoryIcon(category: string): string {
     const icons: Record<string, string> = {
-      'INFRASTRUCTURE': '',
-      'SECURITY': '',
-      'ENVIRONMENT': '',
-      'TRANSPORT': '',
-      'OTHER': ''
+      INFRASTRUCTURE: '',
+      SECURITY: '',
+      ENVIRONMENT: '',
+      TRANSPORT: '',
+      OTHER: '',
     };
     return icons[category] || '';
   }
@@ -109,7 +111,7 @@ export class ReportDetailComponent implements OnInit {
       month: 'long',
       day: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     });
   }
 }

@@ -2,7 +2,7 @@ export enum ReportStatus {
   PENDING = 'PENDING',
   IN_PROGRESS = 'IN_PROGRESS',
   RESOLVED = 'RESOLVED',
-  CLOSED = 'CLOSED'
+  CLOSED = 'CLOSED',
 }
 
 export enum ReportCategory {
@@ -10,7 +10,7 @@ export enum ReportCategory {
   SECURITY = 'SECURITY',
   ENVIRONMENT = 'ENVIRONMENT',
   TRANSPORT = 'TRANSPORT',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export interface Report {

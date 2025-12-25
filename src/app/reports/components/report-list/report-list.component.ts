@@ -5,24 +5,24 @@ import { Report, ReportCategory, ReportStatus, ReportFilter } from '../../models
 @Component({
   selector: 'app-report-list',
   templateUrl: './report-list.component.html',
-  styleUrls: ['./report-list.component.scss']
+  styleUrls: ['./report-list.component.scss'],
 })
 export class ReportListComponent implements OnInit {
   reports: Report[] = [];
   filteredReports: Report[] = [];
   loading = true;
   error = '';
-  
+
   // Filtros
   filter: ReportFilter = {};
   categories = Object.values(ReportCategory);
   statuses = Object.values(ReportStatus);
-  
+
   // Paginación
   currentPage = 1;
   itemsPerPage = 10;
   totalPages = 1;
-  
+
   // Búsqueda
   searchTerm = '';
 
@@ -35,7 +35,7 @@ export class ReportListComponent implements OnInit {
   loadReports(): void {
     this.loading = true;
     this.error = '';
-    
+
     this.reportService.getReports(this.filter).subscribe({
       next: (reports) => {
         this.reports = reports;
@@ -47,7 +47,7 @@ export class ReportListComponent implements OnInit {
         this.error = 'Error al cargar los reportes';
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
@@ -56,10 +56,11 @@ export class ReportListComponent implements OnInit {
       this.filteredReports = [...this.reports];
     } else {
       const term = this.searchTerm.toLowerCase();
-      this.filteredReports = this.reports.filter(report =>
-        report.title.toLowerCase().includes(term) ||
-        report.description.toLowerCase().includes(term) ||
-        report.location.toLowerCase().includes(term)
+      this.filteredReports = this.reports.filter(
+        (report) =>
+          report.title.toLowerCase().includes(term) ||
+          report.description.toLowerCase().includes(term) ||
+          report.location.toLowerCase().includes(term)
       );
     }
     this.currentPage = 1;
@@ -97,7 +98,7 @@ export class ReportListComponent implements OnInit {
         error: (err) => {
           this.error = 'Error al eliminar el reporte';
           console.error(err);
-        }
+        },
       });
     }
   }
@@ -107,7 +108,7 @@ export class ReportListComponent implements OnInit {
       [ReportStatus.PENDING]: 'badge-warning',
       [ReportStatus.IN_PROGRESS]: 'badge-info',
       [ReportStatus.RESOLVED]: 'badge-success',
-      [ReportStatus.CLOSED]: 'badge-secondary'
+      [ReportStatus.CLOSED]: 'badge-secondary',
     };
     return classes[status] || 'badge-secondary';
   }
@@ -118,7 +119,7 @@ export class ReportListComponent implements OnInit {
       [ReportCategory.SECURITY]: '',
       [ReportCategory.ENVIRONMENT]: '',
       [ReportCategory.TRANSPORT]: '',
-      [ReportCategory.OTHER]: ''
+      [ReportCategory.OTHER]: '',
     };
     return icons[category] || '';
   }
